@@ -1,7 +1,5 @@
 Flask
 gunicorn
-re
-string
 random
 numpy
 scipy
