@@ -64,8 +64,7 @@ def recommend(input):
 	print(curr_company)
 	for i in xrange(0, len(company_titles)):
 		if curr_company == company_titles[i]:
-			user_ratings[i] = rate(input)
-	print('lmao')
+			user_ratings[i] = rateNum(input)
 	#self.binarize()
 	guessed_scores = np.zeros(len(ratings))
 	user_rated = np.where(user_ratings != 0)[0] # indices of companies the user has provided a rating for
@@ -75,7 +74,6 @@ def recommend(input):
 			for j in user_rated:
 				rating += user_ratings[j] * distance(ratings[j], ratings[i])
 		guessed_scores[i] = rating
-	print('here')
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
@@ -132,9 +130,37 @@ def rate(input):
 			notFlag = not notFlag
 	if neg_score > pos_score:
 		return 'This answer is a little too negative for a job interivew.'
-		return -1.0
+		#return -1.0
 	else:
 		return 'This answer sounds good!'
+		#return 1.0
+
+def rateNum(input):
+	p = PorterStemmer()
+	negWords = ["not", "isn't", "didn't", "never", "no", "neither", "none", "wasn't", "can't", "won't"]
+	conjunct = ["for", "and", "nor", "but", "or", "yet", "so", "however", "while", "since"]
+	reader = csv.reader(open('data/sentiment.txt', 'rb'))
+	sentiment = dict(reader)
+
+	processed = re.sub(r'[^A-Za-z\s\']', r'', re.sub(r'"[^"]*?"', r'', input.lower())).split(' ')
+	for i in range(len(processed)):
+		processed[i] = p.stem(processed[i])
+	neg_score, pos_score = 0, 0
+	notFlag = False
+	for word in processed:
+		lambda_ = 1
+		if notFlag and (word in string.punctuation or word in conjunct):
+			notFlag = False
+		if word in sentiment:
+			if sentiment[word] == 'neg':
+				neg_score += lambda_ * 1 * (-1 if notFlag else 1)
+			elif sentiment[word] == 'pos':
+				pos_score += lambda_ * 1 * (-1 if notFlag else 1)
+		if word in negWords:
+			notFlag = not notFlag
+	if neg_score > pos_score:
+		return -1.0
+	else:
 		return 1.0
 
 if __name__ == '__main__':
