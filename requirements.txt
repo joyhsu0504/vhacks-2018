@@ -1,0 +1,8 @@
+Flask
+gunicorn
+csv
+re
+string
+random
+numpy
+scipy
