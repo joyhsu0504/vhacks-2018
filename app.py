@@ -35,11 +35,18 @@ def binarize():
 def distance(u, v):
 	return 1 - spatial.distance.cosine(u, v)
 
-@app.route('/vhacks/findjobsarray', methods=['GET', 'POST'])
-def recommendSpecified():
+@app.route('/vhacks/findjobsarray/<string:input>', methods=['GET', 'POST'])
+def recommendSpecified(input):
 	ratings = [[1, 2, 2, 1, 1, 1, 1], [2, 1, 1, 1, 1, 1, 2],  [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 1, 1, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 1, 2, 1, 2, 1], [1, 1, 2, 2, 1, 2, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 2, 1, 2, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 2, 1, 2], [1, 1, 2, 1, 2, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 2, 1], [2, 1, 1, 1, 1, 1, 2], [1, 1, 2, 1, 1, 2, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 2, 1, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 2, 1, 2, 1], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 2, 1, 2], [2, 1, 1, 2, 1, 2, 1], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [2, 1, 2, 1, 1, 1, 2],  [2, 1, 1, 2, 1, 2, 1]]
 	company_titles = ['Albertson', 'American Orange Trucking', 'Atlas Van Lines', 'Baskin-Robbins', 'CalArk International Trucking', 'Campbell Soup Company',  'Chipotle Mexican Grill', 'Coca-Cola Company', 'Comcast', 'Dairy Queen', 'Davis Transport Inc', 'Dunkin Donuts', 'Facebook', 'Five Guys Burgers and Fries', 'Genentech', 'Goodwill Industries', 'Google', 'Hampton Inn', 'Hilton Hotels', 'Home Depot', 'IBM', 'IHOP', 'In-N-Out Burger', 'Kohls', 'Landstar Trucking', 'Lowes', 'Lyft', 'Marriott Hotels', 'McDonalds', 'Mobil Oil', 'New York Times', 'Olive Garden', 'Outback Steakhouse', 'Party City', 'Pepsi-Co', 'PetSmart', 'PGT Trucking', 'Red Lobster', 'Red Robin', 'Residence Inn', 'Shell Oil', 'Sony', 'Starbucks', 'Target Stores', 'TGI Friday', 'Uber', 'United Parcel Service', 'Valvoline Instant Oil Change']
-	job = request.form.getlist('job_ids', type=int)
+	#job = request.form.getlist('job_ids', type=int)
+	job = []
+	temp = input.split(' ')
+	for val in temp:
+		if val == 'no':
+			job.append(1)
+		else:
+			job.append(2)
 	guessed_scores = np.zeros(len(ratings))
 	for i in range(len(ratings)):
 		#rating = 1 - spatial.distance.cosine(ratings[i], job)
