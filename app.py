@@ -64,7 +64,7 @@ def recommend(input):
 	print(curr_company)
 	for i in xrange(0, len(company_titles)):
 		if curr_company == company_titles[i]:
-				user_ratings[i] = rate(input)
+			user_ratings[i] = rate(input)
 	
 	#self.binarize()
 	guessed_scores = np.zeros(len(ratings))
