@@ -65,7 +65,7 @@ def recommend(input):
 	for i in xrange(0, len(company_titles)):
 		if curr_company == company_titles[i]:
 			user_ratings[i] = rate(input)
-	
+	print('lmao')
 	#self.binarize()
 	guessed_scores = np.zeros(len(ratings))
 	user_rated = np.where(user_ratings != 0)[0] # indices of companies the user has provided a rating for
@@ -75,7 +75,7 @@ def recommend(input):
 			for j in user_rated:
 				rating += user_ratings[j] * distance(ratings[j], ratings[i])
 		guessed_scores[i] = rating
-	
+	print('here')
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
