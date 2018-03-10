@@ -12,6 +12,7 @@ app = Flask(__name__)
 	
 @app.route('/vhacks/root', methods=['GET', 'POST'])
 def root():
+	print('let go')
 	action = request['result']['metadata']['intentName']
 	print('start')
 	print(action)
