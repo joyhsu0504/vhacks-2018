@@ -15,7 +15,7 @@ def root():
 	print('let go')
 	data = request.data
 	print(data)
-	action = data[0][6]['intentName']
+	action = data[3][6]['intentName']
 	print('start')
 	print(action)
 	if action == 'Field-question':
