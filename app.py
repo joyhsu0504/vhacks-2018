@@ -10,6 +10,23 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 	
+@app.route('/vhacks/root', methods=['GET', 'POST'])
+def root():
+	action = request['result']['metadata']['intentName']
+	if action == 'Field-question':
+	#if action == 'find_jobs':
+		return findJobs(3)
+	elif action == 'noExperience':
+		return noExperience()
+	elif action == 'find_jobs_array':
+		return recommendSpecified('no no no no no yes no')
+	elif action == 'recommend':
+		return recommend('I worked at American Orange Trucking and I loved it')
+	elif action == 'giveTips':
+		return giveTips()
+	elif action == 'rate':
+		return rate('I am confident')
+	
 @app.route('/vhacks/findjobs/<int:field>', methods=['GET', 'POST'])
 def findJobs(field):
 	ratings = [[1, 2, 2, 1, 1, 1, 1], [2, 1, 1, 1, 1, 1, 2],  [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 1, 1, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 1, 2, 1, 2, 1], [1, 1, 2, 2, 1, 2, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 2, 1, 2, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 2, 1, 2], [1, 1, 2, 1, 2, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 2, 1], [2, 1, 1, 1, 1, 1, 2], [1, 1, 2, 1, 1, 2, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 2, 1, 2], [1, 2, 2, 1, 1, 1, 2], [2, 1, 1, 2, 1, 2, 1], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [1, 1, 2, 1, 1, 1, 2], [2, 1, 1, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 2, 1, 2], [2, 1, 1, 2, 1, 2, 1], [1, 1, 1, 2, 1, 2, 1], [1, 2, 2, 1, 1, 1, 2], [1, 1, 2, 1, 1, 1, 2], [1, 2, 2, 1, 1, 1, 2], [1, 1, 1, 2, 1, 2, 1], [2, 1, 2, 1, 1, 1, 2],  [2, 1, 1, 2, 1, 2, 1]]
