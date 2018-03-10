@@ -20,7 +20,11 @@ def findJobs(field):
 		if rate[field] == 2:
 			recommendations.append(company_titles[i])
 	print(recommendations)
-	return jsonify(speech='temp')
+	response = 'I recommend applying to '
+	for i in xrange(0, len(recommendations) - 1):
+		response += recommendations[i] + ', '
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	return jsonify(speech=response)
 	
 @app.route('/vhacks/noExperience', methods=['GET', 'POST'])
 def noExperience():
@@ -56,7 +60,11 @@ def recommendSpecified(input):
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
-	return jsonify(results=recommendations)
+	response = 'I recommend applying to '
+	for i in xrange(0, len(recommendations) - 1):
+		response += recommendations[i] + ', '
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	return jsonify(speech=response)
 	
 @app.route('/vhacks/recommend/<string:input>', methods=['GET', 'POST'])
 def recommend(input):
@@ -84,7 +92,11 @@ def recommend(input):
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
-	return jsonify(results=recommendations)
+	response = 'I recommend applying to '
+	for i in xrange(0, len(recommendations) - 1):
+		response += recommendations[i] + ', '
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	return jsonify(speech=response)
 	
 # [year in prison, years ago in prison, age, type of felon]	
 @app.route('/vhacks/findMatch', methods=['GET', 'POST'])
