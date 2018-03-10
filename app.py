@@ -13,6 +13,7 @@ app = Flask(__name__)
 @app.route('/vhacks/root', methods=['GET', 'POST'])
 def root():
 	action = request['result']['metadata']['intentName']
+	print(action)
 	if action == 'Field-question':
 	#if action == 'find_jobs':
 		return findJobs(3)
