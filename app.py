@@ -13,7 +13,9 @@ app = Flask(__name__)
 @app.route('/vhacks/root', methods=['GET', 'POST'])
 def root():
 	print('let go')
-	action = request.data['result']['metadata']['intentName']
+	data = request.data
+	print(data)
+	action = data['result']['metadata']['intentName']
 	print('start')
 	print(action)
 	if action == 'Field-question':
