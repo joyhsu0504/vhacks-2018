@@ -32,8 +32,6 @@ def root():
 		return findJobs(6)
 	elif action == 'noExperience':
 		return noExperience()
-	elif action == 'find_jobs_array':
-		return recommendSpecified('no no no no no yes no')
 	elif action == 'recommend':
 		exp_param = js['result']['parameters']['experience']
 		return recommend(exp_param)
