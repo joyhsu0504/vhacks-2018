@@ -40,7 +40,8 @@ def root():
 	elif action == 'giveTips':
 		return giveTips()
 	elif action == 'rate':
-		return rate('I am confident')
+		rate_param = js['result']['parameters']['confidence']
+		return rate(rate_param)
 	
 @app.route('/vhacks/findjobs/<int:field>', methods=['GET', 'POST'])
 def findJobs(field):
@@ -182,10 +183,10 @@ def rate(input):
 		if word in negWords:
 			notFlag = not notFlag
 	if neg_score > pos_score:
-		return 'This answer is a little too negative for a job interivew.'
+		return jsonify(speech='This answer is a little too negative for a job interivew.')
 		#return -1.0
 	else:
-		return 'This answer sounds good!'
+		return jsonify(speech='This answer sounds good!')
 		#return 1.0
 
 def rateNum(input):
