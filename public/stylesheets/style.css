@@ -1,0 +1,44 @@
+html, body {
+  	margin: 0;
+  	padding: 0;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Open Sans",sans-serif;
+  color: #FFF;
+}
+
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
+	color: #EEE;
+}
+
+.menu {
+	display: inline-block;
+	position: fixed;
+}
+
+#navbar {
+	list-style-type: none;
+	font-size: 18px;
+}
+
+#nav_bottom {
+	position: fixed;
+	bottom: 40px;
+}
+
+.form {
+	display: inline-block;
+	float: right;
+}
+
+.names {
+	text-align: center;
+}
