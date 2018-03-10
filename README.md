@@ -1,4 +1,4 @@
-jobBot
+Leif
 =======
 
 ## Description
@@ -35,7 +35,7 @@ Social inclusion of the ex-incarcerated
 ## Authors
 
 [Hayden Hotham](https://github.com/EmotionlessVR)<br>
-[Joy Hsu]<br>
+[Joy Hsu](https://github.com/joyhsu0504)<br>
 [Konstantin Mishchenko]<br>
 [Sandeep Subramanian]<br>
 [Summer Wu](https://github.com/sw5813)<br>
