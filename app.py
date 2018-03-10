@@ -140,15 +140,16 @@ def bestMatch(allUsers):
 	
 @app.route('/vhacks/givetips', methods=['GET', 'POST'])
 def giveTips():
+	motivation_qs = 'Do you feel motivated and self-confident? What are your feelings?'
 	tips = ['Address any concerns an employer might have about your past.', 'Steer the interview to your skills and the positive traits that you bring to the job.', 'Avoid talking about negative issues at the very beginning or the end of an interview.', 'Use every opportunity to talk about your current activities and future plans.', 'Emphasize the education and job training, community work, and other activities you have done since your release.', 'Talk about your career goals, how you chose them, and how the job you are applying for fits those goals.', 'Don\'t lie to an interviewer or put false information on your resume or application.']
 	if len(tips) != 0:
 		#print(tips[0])
 		#tips = tips[1:]
 		print(random.choice(tips))
-		return jsonify(speech=random.choice(tips))
+		return jsonify(speech=random.choice(tips) + motivation_qs)
 	else:
 		print('Be yourself!')
-		return jsonify(speech='Be yourself!')
+		return jsonify(speech='Be yourself!' + motivation_qs)
 		
 @app.route('/vhacks/rate/<string:input>', methods=['GET', 'POST'])
 def rate(input):
