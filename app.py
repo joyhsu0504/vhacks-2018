@@ -21,7 +21,7 @@ def root():
 	action = js['result']['metadata']['intentName']
 	print('start')
 	print(action)
-	if action == 'Field-question':
+	if action == 'find_jobs':
 		print('here')
 	#if action == 'find_jobs':
 		return findJobs(3)
