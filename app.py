@@ -54,7 +54,7 @@ def findJobs(field):
 	response = 'I recommend applying to '
 	for i in xrange(0, len(recommendations) - 1):
 		response += recommendations[i] + ', '
-	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-offenders and match with your interests!' 
 	return jsonify(speech=response)
 	
 @app.route('/vhacks/noExperience', methods=['GET', 'POST'])
@@ -92,10 +92,10 @@ def recommendSpecified(input):
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
-	response = 'I recommend applying to '
+	response = 'Thanks for supplying me with your interests! I recommend applying to '
 	for i in xrange(0, len(recommendations) - 1):
 		response += recommendations[i] + ', '
-	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-offenders and match with your interests!' 
 	return jsonify(speech=response)
 	
 @app.route('/vhacks/recommend/<string:input>', methods=['GET', 'POST'])
@@ -124,10 +124,10 @@ def recommend(input):
 	sorted_idx = np.argsort(guessed_scores)[::-1]
 	recommendations = [company_titles[sorted_idx[i]] for i in range(3)]
 	print(recommendations)
-	response = 'I recommend applying to '
+	response = 'Because of your past experience, I recommend applying to '
 	for i in xrange(0, len(recommendations) - 1):
 		response += recommendations[i] + ', '
-	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-convicts and match with your interests!' 
+	response += 'and ' + recommendations[len(recommendations) - 1] + '. \n These companies hire ex-offenders and match with your interests!' 
 	return jsonify(speech=response)
 	
 # [year in prison, years ago in prison, age, type of felon]	
@@ -181,10 +181,10 @@ def rate(input):
 		if word in negWords:
 			notFlag = not notFlag
 	if neg_score > pos_score:
-		return jsonify(speech='This answer is a little too negative for a job interivew.')
+		return jsonify(speech='Hmm... This answer may be a little too negative for a job interivew. Be more confident and focus on your skill sets!')
 		#return -1.0
 	else:
-		return jsonify(speech='This answer sounds good!')
+		return jsonify(speech='This answer sounds positive. Great work!')
 		#return 1.0
 
 def rateNum(input):
