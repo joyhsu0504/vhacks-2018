@@ -145,10 +145,10 @@ def giveTips():
 		#print(tips[0])
 		#tips = tips[1:]
 		print(random.choice(tips))
-		return random.choice(tips)
+		return jsonify(speech=random.choice(tips))
 	else:
 		print('Be yourself!')
-		return 'Be yourself!'
+		return jsonify(speech='Be yourself!')
 		
 @app.route('/vhacks/rate/<string:input>', methods=['GET', 'POST'])
 def rate(input):
