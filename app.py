@@ -3,6 +3,7 @@ import csv
 import re
 import string
 import random
+import json
 import numpy as np
 from scipy import spatial
 from PorterStemmer import PorterStemmer
@@ -15,7 +16,9 @@ def root():
 	print('let go')
 	data = request.data
 	print(data)
-	action = data[3][6]['intentName']
+	js = json.loads(data)
+	print(js)
+	action = js['result']['metadata']['intentName']
 	print('start')
 	print(action)
 	if action == 'Field-question':
