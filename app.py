@@ -23,8 +23,12 @@ def root():
 	print(action)
 	if action == 'find_jobs':
 		print('here')
-	#if action == 'find_jobs':
-		return findJobs(3)
+		field_param = js['result']['parameters']['field']
+		 field_dict = {'truck': 0, 'food': 1,
+		'cashier': 2, 'tech': 3, 'hotel': 4, 'assistant': 5}
+		for field in field_dict:
+			if field in field_param:
+				return findJobs(field_dict[field])
 	elif action == 'noExperience':
 		return noExperience()
 	elif action == 'find_jobs_array':
