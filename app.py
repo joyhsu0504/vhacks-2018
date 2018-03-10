@@ -13,9 +13,9 @@ app = Flask(__name__)
 	
 @app.route('/vhacks/root', methods=['GET', 'POST'])
 def root():
-	print('let go')
+	#print('let go')
 	data = request.data
-	print(data)
+	#print(data)
 	js = json.loads(data)
 	print(js)
 	action = js['result']['metadata']['intentName']
