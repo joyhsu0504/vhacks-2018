@@ -24,7 +24,7 @@ def root():
 	if action == 'find_jobs':
 		print('here')
 		field_param = js['result']['parameters']['field']
-		 field_dict = {'truck': 0, 'food': 1,
+		field_dict = {'truck': 0, 'food': 1,
 		'cashier': 2, 'tech': 3, 'hotel': 4, 'assistant': 5}
 		for field in field_dict:
 			if field in field_param:
