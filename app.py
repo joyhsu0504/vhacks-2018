@@ -28,7 +28,7 @@ def findJobs(field):
 	
 @app.route('/vhacks/noExperience', methods=['GET', 'POST'])
 def noExperience():
-	print(request)
+	print(request.data)
 	return findJobs(6)
 		
 def binarize():
