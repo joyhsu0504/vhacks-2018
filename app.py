@@ -29,12 +29,14 @@ def root():
 		for field in field_dict:
 			if field in field_param:
 				return findJobs(field_dict[field])
+		return findJobs(6)
 	elif action == 'noExperience':
 		return noExperience()
 	elif action == 'find_jobs_array':
 		return recommendSpecified('no no no no no yes no')
 	elif action == 'recommend':
-		return recommend('I worked at American Orange Trucking and I loved it')
+		exp_param = js['result']['parameters']['experience']
+		return recommend(exp_param)
 	elif action == 'giveTips':
 		return giveTips()
 	elif action == 'rate':
