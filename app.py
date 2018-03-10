@@ -20,7 +20,7 @@ def findJobs(field):
 		if rate[field] == 2:
 			recommendations.append(company_titles[i])
 	print(recommendations)
-	return jsonify(results=recommendations)
+	return jsonify(speech=recommendations)
 	
 @app.route('/vhacks/noExperience', methods=['GET', 'POST'])
 def noExperience():
