@@ -13,7 +13,6 @@ app = Flask(__name__)
 	
 @app.route('/vhacks/root', methods=['GET', 'POST'])
 def root():
-	#print('let go')
 	data = request.data
 	#print(data)
 	js = json.loads(data)
