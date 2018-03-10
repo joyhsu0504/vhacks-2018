@@ -1,28 +1,31 @@
 var botui = new BotUI('api-bot');
 
-var socket = io.connect('http://localhost:8010');
+var socket = io.connect();
 // read the BotUI docs : https://docs.botui.org/
+
 botui.message.add({
-    content: 'Lets Start Talking...',
-    delay: 1500,
-  }).then(function () {
-    botui.action.text({
-      action: {
-        placeholder: 'Say Hello', }
-    }
-  ).then(function (res) {
-    socket.emit('fromClient', { client : res.value }); // sends the message typed to server
-      console.log(res.value); // will print whatever was typed in the field.
+  content: 'Hi! I\'m Leif, your personal advisor for helping you reintegrate into society post-incarceration!',
+  delay: 1500,
+}).then(function () {
 
+  socket.emit('fromClient', { client : "begin" }); // sends start to server
+
+}).then(function () {
+
+  socket.on('fromServer', function (data) { // recieveing a reply from server.
+
+    botui.message.add({
+      content: data.server,
+      delay: 100,
     }).then(function () {
+      botui.action.text({
+        action: {
+          placeholder: '', }
+      }).then(function (res) {
+        socket.emit('fromClient', { client : res.value }); // sends the message typed to server
+        console.log(res.value); // will print whatever was typed in the field.
+      })
+    });
 
-      socket.on('fromServer', function (data) { // recieveing a reply from server.
-        console.log(data.server);
-      botui.message.add({
-          content: data.server,
-          delay: 500,
-        });
-      });
-
-    })
-  });
+  })
+});

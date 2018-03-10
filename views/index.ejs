@@ -6,23 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
-    <%# Custom StyleSheet for Black Color (Totally Optional)%>
-    <link rel="stylesheet" href="stylesheets/black.css" />
+    <%# Custom StyleSheet for custom colors %>
+    <link rel="stylesheet" href="stylesheets/botui.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-      <%# Bot Declaration%>
-    <div class="botui-app-container" id="api-bot">
-      <bot-ui></bot-ui>
+    <%# Menu %>
+    <div class="menu">
+      <ul id="navbar">
+          <li><a href="/" id="nav_leif">Leif</a></li>
+          <% if (user != null) { %>
+            <li><a href="/connections" id="nav_connections">Connections</a></li>
+            <li><a href="/jobs" id="nav_jobs">Jobs</a></li>
+            <li id="nav_bottom"><a href="/logout" id="logout">Logout</a></li>
+          <% } else { %>
+            <li id="nav_bottom"><a href="/login" id="login">Login</a> / <a href="/register" id="register">Register</a></li>
+          <% } %>
+      </ul>
     </div>
+
+    <% if (page == 'leif') { %>
+      <% include partials/leif %>
+    <% } else if (page == 'connections') { %>
+      <% include partials/connections %>
+    <% } else if (page == 'jobs') { %>
+      <% include partials/leif %>
+    <% } else if (page == 'login') { %>
+      <% include partials/login %>
+    <% } else if (page == 'register') { %>
+      <% include partials/register %>
+    <% } %>
 
     <%# JS STUFF%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <%# Edit the Conversation from Convo.js%>
-    <script src="javascripts/convo.js"></script>
+    <% if (page == 'leif') { %>
+      <script src="javascripts/convo.js"></script>
+    <% } else if (page == 'connections') { %>
+      <script src="javascripts/chats.js"></script>
+    <% } %>
     <script src="javascripts/socket.js"></script>
+    <script src="javascripts/leif.js"></script>
   </body>
 </html>

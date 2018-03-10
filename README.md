@@ -1,27 +1,42 @@
-# bot-api.ai
-### A BotUI app connected to API.AI.
+jobBot
+=======
 
-##### How to Use?
+## Description
 
-You can simply chose to
-Build it yourself from scratch using this [Tutorial](https://chatbotslife.com/custom-api-ai-chatbot-using-botui-58d673155c7d).
+Built for [VHacks](https://vhacks.org/), a hackathon at the Vatican! 
 
-OR...
 
-Follow these steps below
+## Screenshots
 
-1. Go to [API.AI](https://www.api.ai) and get a key!
-2. Clone the Repo,
-  `
-  git clone https://github.com/sushantshekhar20/bot-api.ai.git
-  `
-3. `cd bot_api.ai`
-4. Place your Key in config/api.js
+
+
+## Background
+
+Social inclusion of the ex-incarcerated
+
+
+## Features
+
+
+
+## Usage
+
+### Bot
+1. Go to [DialogFlow](https://dialogflow.com/) and get a key!
+2. Clone the repo
+3. `cd leif`
+4. Place your key in config/api.js
 5. `npm install`
-6. `node bin/www`
-7. Open Browser , go to "localhost:3000"
+6. `npm start`
+7. Open Browser , go to "http://localhost:3000"
 
   Edit the Chat Flow from public/javascripts/convo.js
 
-UI Design by [BotUI](https://github.com/moinism/botui).
-NLP Used [API.AI](https://www.api.ai).
+## Authors
+
+[Hayden Hotham](https://github.com/EmotionlessVR)<br>
+[Joy Hsu]<br>
+[Konstantin Mishchenko]<br>
+[Sandeep Subramanian]<br>
+[Summer Wu](https://github.com/sw5813)<br>
+

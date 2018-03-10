@@ -1,0 +1,58 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #5FB3CB;
+}
+
+iframe {
+  width: 100%;
+}
+
+.botui-app-container {
+  height: 100%;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.botui-container {
+  background-color: #5FB3CB;
+}
+.botui-message-content {
+  color: #217F99;
+  background-color: #C0E9F4;
+}
+
+.botui-message-content.human {
+  background-color: #217F99;
+}
+
+.botui-actions-text-input {
+  color: #FFFFFF;
+  border-bottom: 1px solid #3498DB;
+  float: right;
+}
+
+.botui-actions-buttons-button {
+  line-height: 1 !important;
+  background-color: #3498DB;
+}
+
+.botui-message-content-link {
+  color: #F1C40F;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #217F99;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #217F99;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #217F99;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #217F99;
+}
